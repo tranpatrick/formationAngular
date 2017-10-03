@@ -8,6 +8,7 @@ import { ItemListComponent } from './item-list/item-list.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
 import { FormComponent } from './form/form.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormComponent } from './form/form.component';
     MenuComponent,
     ItemListComponent,
     ModalComponent,
-    FormComponent // Import de composant pour pouvoir l'utiliser dans ce composant
+    FormComponent,
+    FilterPipe // Import de composant pour pouvoir l'utiliser dans ce composant
   ],
   imports: [
     BrowserModule,
