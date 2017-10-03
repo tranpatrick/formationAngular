@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from './item';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,7 @@ export class AppComponent implements OnInit {
   refCtrl: FormControl;
   stateCtrl: FormControl;
 
-  constructor (fb: FormBuilder) {
+  constructor (fb: FormBuilder, private modalService: NgbModal) {
     this.nameCtrl = fb.control('', [Validators.required, Validators.minLength(2)]);
     this.refCtrl = fb.control('', [Validators.required, Validators.minLength(4),]);
     this.stateCtrl = fb.control(0); // Met la valeur d'index 0 par défaut
@@ -35,6 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   addItem() {
+    this.open();
     this.collection.push({
       name: this.form.get('name').value,
       reference: this.form.get('ref').value, // permet d'envoyer la valeur ref même si le tableau attend un objet avec "reference"
@@ -52,5 +55,11 @@ export class AppComponent implements OnInit {
   isValid(champ: string) {
     return this.form.get(champ).dirty && this.form.get(champ).hasError('minlength');
   }
+
+  open() {
+    const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.msg = 'Votre commande a bien été ajoutée';
+  }
+
 
 }

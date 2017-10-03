@@ -5,17 +5,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ItemListComponent } from './item-list/item-list.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    ItemListComponent // Import de composant pour pouvoir l'utiliser dans ce composant
+    ItemListComponent,
+    ModalComponent // Import de composant pour pouvoir l'utiliser dans ce composant
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule // Import de module
+    ReactiveFormsModule, // Import de module
+    NgbModule.forRoot()
+  ],
+  entryComponents: [
+    ModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
