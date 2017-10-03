@@ -1,5 +1,12 @@
 <div class="container">
-  <div *ngFor="let item of collection" class="card">
+  <div class="navibar-light">
+    <form action="form-inline">
+      <input (keyup)="$event" #recherche class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    </form>
+  </div>
+</div>
+<div class="container">
+  <div *ngFor="let item of collection | filter:recherche.value" class="card">
     <div class="card-header">
       <span class="state-0" *ngIf="0 == item.state">A livrer</span>
       <span class="state-1" *ngIf="1 == item.state">En cours de livraison</span>
