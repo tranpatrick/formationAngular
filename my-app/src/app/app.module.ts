@@ -9,6 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
 import { FormComponent } from './form/form.component';
 import { FilterPipe } from './filter.pipe';
+import { StateDirective } from './state.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FilterPipe } from './filter.pipe';
     ItemListComponent,
     ModalComponent,
     FormComponent,
-    FilterPipe // Import de composant pour pouvoir l'utiliser dans ce composant
+    FilterPipe,
+    StateDirective // Import de composant pour pouvoir l'utiliser dans ce composant
   ],
   imports: [
     BrowserModule,
