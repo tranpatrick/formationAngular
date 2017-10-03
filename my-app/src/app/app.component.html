@@ -2,12 +2,14 @@
 <app-item-list></app-item-list>
 
 <div class="container">
-  <form class="form" novalidate>
+  <form class="form" novalidate #form="ngForm">
     <div class="form-group">
-      <input type="text" [(ngModel)]="newItem.name" class="form-control" name="name" placeholder="Nom et prénom">
+      <input #name="ngModel" type="text" [(ngModel)]="newItem.name" class="form-control" name="name" placeholder="Nom et prénom" required minlength="2">
+      <span [hidden]="name.valid || !newItem.name" class="alert alert-danger">Champ invalide</span> <!-- pristine = true jusqua que l'user modifie le champ" -->
     </div>
     <div class="form-group">
-      <input type="text" [(ngModel)]="newItem.reference" class="form-control" name="reference" placeholder="ex : 1234">
+      <input type="text" #reference="ngModel" [(ngModel)]="newItem.reference" class="form-control" name="reference" placeholder="ex : 1234" required minlength="4">
+      <span [hidden]="reference.valid || reference.pristine || !newItem.reference" class="alert alert-danger">Champ invalide</span> <!-- pristine = true jusqua que l'user modifie le champ" -->
     </div>
     <div class="form-group">
       <select [(ngModel)]="newItem.state" class="form-control" name="state">
@@ -16,6 +18,6 @@
         <option [ngValue]="2">Commande livrée</option>
       </select>
     </div>
-    <button type="submit" (click)="addItem()" class="btn btn-primary">Envoyer</button>
+    <button [disabled]="form.invalid" type="submit" (click)="addItem()" class="btn btn-primary">Envoyer</button> <!-- disabled si ... -->
   </form>
 </div>
