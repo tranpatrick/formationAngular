@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -12,7 +13,8 @@ import { ItemListComponent } from './item-list/item-list.component';
     ItemListComponent // Import de composant pour pouvoir l'utiliser dans ce composant
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule // Import de module
   ],
   providers: [],
   bootstrap: [AppComponent]
