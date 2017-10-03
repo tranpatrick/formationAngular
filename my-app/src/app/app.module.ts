@@ -7,13 +7,15 @@ import { MenuComponent } from './menu/menu.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ItemListComponent,
-    ModalComponent // Import de composant pour pouvoir l'utiliser dans ce composant
+    ModalComponent,
+    FormComponent // Import de composant pour pouvoir l'utiliser dans ce composant
   ],
   imports: [
     BrowserModule,
