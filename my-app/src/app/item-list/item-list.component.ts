@@ -1,5 +1,6 @@
 import { AppComponent } from '../app.component';
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-item-list',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemListComponent implements OnInit {
 
-  collection: any;
+  collection: Item[];
 
   constructor(private _AppComponent: AppComponent) { } // injection de l'app component
 
