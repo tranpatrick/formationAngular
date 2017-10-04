@@ -1,8 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../modal/modal.component';
 import { Item } from '../item';
+import { CollectionService } from '../collection.service';
 
 @Component({
   selector: 'app-form',
@@ -11,15 +12,14 @@ import { Item } from '../item';
 })
 export class FormComponent implements OnInit {
 
-  @Output() add: EventEmitter<Item> = new EventEmitter;
   form: FormGroup;
   nameCtrl: FormControl;
   refCtrl: FormControl;
   stateCtrl: FormControl;
 
-  constructor (fb: FormBuilder, private modalService: NgbModal) {
+  constructor (fb: FormBuilder, private modalService: NgbModal, private _CollectionService: CollectionService) {
     this.nameCtrl = fb.control('', [Validators.required, Validators.minLength(2)]);
-    this.refCtrl = fb.control('', [Validators.required, Validators.minLength(4),]);
+    this.refCtrl = fb.control('', [Validators.required, Validators.minLength(4)]);
     this.stateCtrl = fb.control(0); // Met la valeur d'index 0 par défaut
     this.form = fb.group({
       name: this.nameCtrl,
@@ -47,7 +47,7 @@ export class FormComponent implements OnInit {
   }
 
   addItem() {
-    this.add.emit({
+    this._CollectionService.addItem({
       name: this.form.get('name').value,
       reference: this.form.get('ref').value,
       state: this.form.get('state').value
