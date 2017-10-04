@@ -4,15 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ItemListComponent } from '../item-list/item-list.component';
 import { FormComponent } from '../form/form.component';
+import { HomeComponent } from '../home/home.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 
 const appRoutes: Routes = [
   { path: 'list', component: ItemListComponent },
   { path: 'form', component: FormComponent },
+  { path: 'home', component: HomeComponent },
   { path: '',
-    redirectTo: '/list',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
