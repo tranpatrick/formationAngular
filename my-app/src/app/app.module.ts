@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment.prod';
 import { ItemModuleModule } from './item-module/item-module.module';
+import { ItemRoutingModule } from './item-routing/item-routing.module';
 
 
 
@@ -24,8 +25,9 @@ import { ItemModuleModule } from './item-module/item-module.module';
   imports: [
     BrowserModule, // Import de module
     NgbModule.forRoot(),
-    AppRoutingModule,
-    ItemModuleModule
+    ItemModuleModule,
+    ItemRoutingModule,
+    AppRoutingModule
   ],
   entryComponents: [
     ModalComponent
