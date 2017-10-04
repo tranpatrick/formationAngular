@@ -14,6 +14,12 @@ import { CollectionService } from './collection.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
+import { environment } from '../environments/environment.prod';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +38,10 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule, // Import de module
     NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   entryComponents: [
     ModalComponent
